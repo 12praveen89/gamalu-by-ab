@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAMALU by AB | Artisanal Luxury Candles & Olfactory Objects</title>
+  <meta name="description" content="Quiet luxury artisanal candles hand-poured in micro-batches with slow-cured coconut-soy wax, crackling cedarwood wicks, and rare botanicals.">
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FAF9F6',
+            linen: '#F3EFEA',
+            'raw-silk': '#E5DFD5',
+            sandstone: '#E8E2D8',
+            'warm-sand': '#D1C7B8',
+            'deep-bark': '#4A443F',
+            espresso: '#2C2724',
+            obsidian: '#1A1715',
+            gold: {
+              DEFAULT: '#C59B27',
+              hover: '#D4AF37',
+              light: '#F8F4EA',
+              dark: '#9A771C'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          boxShadow: {
+            'luxury': '0 20px 40px -15px rgba(44, 39, 36, 0.07)',
+            'luxury-lg': '0 30px 60px -20px rgba(44, 39, 36, 0.12)',
+            'gold-glow': '0 0 25px rgba(197, 155, 39, 0.25)',
+          },
+          letterSpacing: {
+            'ultra-wide': '0.3em',
+            'super-wide': '0.4em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF9F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D1C7B8;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4A443F;
+    }
+
+    /* Ambient pulse */
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    .animate-gentle-pulse {
+      animation: gentlePulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Glassmorphism subtle */
+    .glassmorphism {
+      background: rgba(250, 249, 246, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    
+    .glassmorphism-dark {
+      background: rgba(26, 23, 21, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Selection Color */
+    ::selection {
+      background: #E5DFD5;
+      color: #1A1715;
+    }
+    
+    /* Print Styles for Luxury Receipt */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #receipt-modal, #receipt-modal * {
+        visibility: visible;
+      }
+      #receipt-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-alabaster text-espresso font-sans antialiased selection:bg-raw-silk selection:text-obsidian flex flex-col min-h-screen">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <aside aria-label="Announcement" class="bg-obsidian text-alabaster border-b border-deep-bark/30 text-xs py-2.5 px-4 tracking-wider uppercase transition-all duration-300 relative z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="hidden md:flex items-center space-x-2 text-[11px] text-[#D1C7B8]">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold animate-ping"></span>
+        <span>Micro-Batch Pour No. 09 Active</span>
+      </div>
+      <div class="w-full md:w-auto text-center flex-1 md:flex-initial">
+        <p class="font-normal text-[11px] md:text-xs tracking-widest text-[#FAF9F6]">
+          Complimentary Gift Packaging &amp; Hand-Calligraphed Note &bull; 
+          <span class="text-gold font-medium">Free White-Glove Shipping</span> on orders over ₹3,500
+        </p>
+      </div>
+      <div class="hidden md:flex items-center space-x-4 text-[11px] text-[#D1C7B8]">
+        <span class="cursor-pointer hover:text-gold transition-colors" onclick="scrollToSection('care-section')">Candle Care Ritual</span>
+        <span class="text-deep-bark">|</span>
+        <span class="text-gold">Pan-India Delivery</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- STICKY GLASSMORPHIC HEADER -->
+  <header id="main-header" class="sticky top-0 z-40 transition-all duration-300 glassmorphism border-b border-warm-sand/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 md:h-24 flex items-center justify-between">
+      
+      <!-- Left: Navigation Links & Mobile Toggle -->
+      <div class="flex items-center space-x-6">
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-obsidian hover:text-gold transition-colors focus:outline-none" aria-label="Open Navigation Menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+
+        <nav class="hidden lg:flex items-center space-x-8 text-xs uppercase tracking-widest font-medium text-deep-bark">
+          <a href="#collection" class="hover:text-gold transition-colors relative py-1 group">
+            The Collection
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#craftsmanship" class="hover:text-gold transition-colors relative py-1 group">
+            Our Craft
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#scent-guide" class="hover:text-gold transition-colors relative py-1 group">
+            Scent Pyramid
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#care-section" class="hover:text-gold transition-colors relative py-1 group">
+            The Ritual
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Center: Luxury Brand Wordmark -->
+      <div class="text-center cursor-pointer select-none" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl tracking-[0.28em] font-light text-obsidian uppercase">
+          GAMALU
+        </h1>
+        <p class="font-sans text-[9px] md:text-[11px] tracking-super-wide text-deep-bark font-light uppercase -mt-0.5">
+          by AB &bull; Artisanal Luxury
+        </p>
+      </div>
+
+      <!-- Right: Search, Currency & Shopping Bag -->
+      <div class="flex items-center space-x-4 md:space-x-6">
+        <button onclick="toggleSearchModal(true)" class="text-deep-bark hover:text-obsidian transition-colors p-2" aria-label="Search Fragrances">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+        
+        <span class="hidden sm:inline-block text-xs font-medium tracking-widest text-deep-bark px-2 py-1 border border-warm-sand/50 rounded">
+          INR (₹)
+        </span>
+
+        <!-- Shopping Bag Trigger -->
+        <button id="cart-drawer-trigger" onclick="toggleCartDrawer(true)" class="relative p-2 text-obsidian hover:text-gold transition-colors flex items-center group" aria-label="Open Shopping Bag">
+          <i data-lucide="shopping-bag" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.5]"></i>
+          <span id="cart-badge" class="absolute -top-1 -right-1 bg-gold text-obsidian text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm transform scale-90 group-hover:scale-105 transition-transform duration-200">
+            0
+          </span>
+          <span class="hidden md:inline-block ml-2 text-xs uppercase tracking-widest text-deep-bark group-hover:text-gold transition-colors">
+            Bag (<span id="cart-subtotal-header">₹0</span>)
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER (Slide-over from left) -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/60 backdrop-blur-sm" aria-hidden="true">
+    <div id="mobile-drawer-panel" class="absolute inset-y-0 left-0 max-w-xs w-full bg-alabaster shadow-2xl p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-300 ease-out pointer-events-auto">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-warm-sand/50">
+          <div>
+            <span class="font-serif text-xl tracking-[0.2em] font-medium text-obsidian uppercase">GAMALU</span>
+            <span class="block text-[10px] tracking-super-wide text-deep-bark uppercase">by AB</span>
+          </div>
+          <button id="close-mobile-menu-btn" class="p-2 text-deep-bark hover:text-obsidian" aria-label="Close Mobile Menu">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+        <nav class="mt-8 flex flex-col space-y-6 text-sm uppercase tracking-widest font-medium text-espresso">
+          <a href="#collection" class="mobile-nav-link hover:text-gold transition-colors py-1 flex items-center justify-between">
+            <span>The Collection</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-warm-sand"></i>
+          </a>
+          <a href="#craftsmanship" class="mobile-nav-link hover:text-gold transition-colors py-1 flex items-center justify-between">
+            <span>Our Craftsmanship</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-warm-sand"></i>
+          </a>
+          <a href="#scent-guide" class="mobile-nav-link hover:text-gold transition-colors py-1 flex items-center justify-between">
+            <span>Olfactory Pyramid</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-warm-sand"></i>
+          </a>
+          <a href="#care-section" class="mobile-nav-link hover:text-gold transition-colors py-1 flex items-center justify-between">
+            <span>The Burning Ritual</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-warm-sand"></i>
+          </a>
+          <a href="#reviews" class="mobile-nav-link hover:text-gold transition-colors py-1 flex items-center justify-between">
+            <span>Editorial Journal</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-warm-sand"></i>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-warm-sand/50 text-xs text-deep-bark space-y-3">
+        <p class="font-serif italic text-base text-obsidian">"Scent is the whisper of memory."</p>
+        <p class="text-[11px] text-deep-bark/80">Handcrafted in micro-batches with slow coconut-soy wax and rare botanical oils.</p>
+        <div class="flex items-center space-x-3 text-obsidian pt-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-gold"></i>
+          <span class="text-[11px] font-medium">100% Phthalate &amp; Soot Free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    
+    <!-- EDITORIAL HERO SECTION -->
+    <section class="relative overflow-hidden pt-8 pb-16 md:pt-12 md:pb-28 border-b border-warm-sand/30">
+      <!-- Ambient background glow elements -->
+      <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-raw-silk/50 blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-0 -left-20 w-80 h-80 rounded-full bg-sandstone/40 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Left Column: Editorial Headline & Value Prop -->
+          <div class="lg:col-span-7 space-y-6 md:space-y-8 pr-0 lg:pr-6">
+            
+            <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full border border-warm-sand/80 bg-linen/70 backdrop-blur-sm text-[11px] uppercase tracking-widest text-deep-bark">
+              <span class="w-2 h-2 rounded-full bg-gold"></span>
+              <span>Limited Edition Artisanal Batch &bull; Pour No. 09</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] text-obsidian tracking-tight">
+              Illuminate Your <br>
+              <span class="italic font-normal text-gold-dark hover:text-gold transition-colors duration-300">Sacred Sanctuary</span>
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-xl text-deep-bark font-light leading-relaxed max-w-xl">
+              Hand-poured olfactory objects born from unrefined coconut-soy wax, crackling FSC-certified cedarwood wicks, and botanical distillations blended between Grasse and Mysore.
+            </p>
+
+            <!-- Dual CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-5 pt-2">
+              <a href="#collection" class="inline-flex items-center justify-center px-8 py-4 bg-obsidian text-alabaster hover:bg-espresso text-xs tracking-widest uppercase font-medium rounded transition-all duration-300 shadow-luxury group">
+                <span>Explore The Collection</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+
+              <a href="#craftsmanship" class="inline-flex items-center justify-center px-8 py-4 border border-deep-bark/50 hover:border-obsidian text-obsidian hover:bg-linen/80 text-xs tracking-widest uppercase font-medium rounded transition-all duration-300">
+                <span>Discover Our Craft</span>
+              </a>
+            </div>
+
+            <!-- Micro-Specs Feature Strip -->
+            <div class="pt-8 border-t border-warm-sand/50 grid grid-cols-3 gap-4 sm:gap-6 text-center sm:text-left">
+              <div>
+                <span class="block font-serif text-2xl sm:text-3xl font-light text-obsidian">55+ Hrs</span>
+                <span class="text-[11px] sm:text-xs tracking-wider uppercase text-deep-bark/80">Clean Burn Time</span>
+              </div>
+              <div>
+                <span class="block font-serif text-2xl sm:text-3xl font-light text-obsidian">100%</span>
+                <span class="text-[11px] sm:text-xs tracking-wider uppercase text-deep-bark/80">Soy-Coconut Wax</span>
+              </div>
+              <div>
+                <span class="block font-serif text-2xl sm:text-3xl font-light text-obsidian">Zero</span>
+                <span class="text-[11px] sm:text-xs tracking-wider uppercase text-deep-bark/80">Synthetic Toxins</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Asymmetric Lifestyle Imagery with Floating Badge -->
+          <div class="lg:col-span-5 relative">
+            <div class="relative mx-auto max-w-md lg:max-w-none">
+              
+              <!-- Subtle decorative frame -->
+              <div class="absolute -inset-3 sm:-inset-4 border border-warm-sand/60 rounded-sm pointer-events-none -z-10 translate-x-2 translate-y-2"></div>
+
+              <!-- Main Hero Image Frame -->
+              <div class="relative overflow-hidden rounded-sm shadow-luxury-lg aspect-[4/5] bg-linen">
+                <img 
+                  id="hero-img"
+                  src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Gamalu Artisanal Candle in hand-thrown ceramic vessel" 
+                  class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-1000 ease-out"
+                  onerror="this.src='https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=1000&q=80'"
+                >
+                
+                <!-- Gentle gradient vignette -->
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/40 via-transparent to-transparent pointer-events-none"></div>
+
+                <!-- Floating Glassmorphic Burn Badge -->
+                <div class="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 glassmorphism p-4 sm:p-5 rounded border border-white/60 shadow-lg">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <div class="flex items-center space-x-2 text-[10px] tracking-widest uppercase text-gold-dark font-medium">
+                        <span class="w-2 h-2 rounded-full bg-gold inline-block animate-gentle-pulse"></span>
+                        <span>Signature Vessel</span>
+                      </div>
+                      <h4 class="font-serif text-lg sm:text-xl font-medium text-obsidian mt-0.5">Santal &amp; Smoked Cardamom</h4>
+                      <p class="text-xs text-deep-bark mt-1">Cedarwood Wick &bull; Hand-Spun Charcoal Stoneware</p>
+                    </div>
+                    <div class="text-right">
+                      <span class="font-serif text-lg font-semibold text-obsidian">₹2,450</span>
+                      <button onclick="quickAddHero()" class="mt-1 block text-[11px] font-medium uppercase tracking-wider text-gold hover:text-gold-dark underline">
+                        + Add To Bag
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND CRAFTSMANSHIP PILLAR STRIP -->
+    <section id="craftsmanship" class="py-16 md:py-24 bg-linen border-b border-warm-sand/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-super-wide text-gold-dark font-medium block">Sacred Formulations</span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-obsidian mt-2">
+            The Philosophy of Pure Light
+          </h2>
+          <div class="w-12 h-0.5 bg-gold mx-auto my-4"></div>
+          <p class="text-deep-bark text-sm sm:text-base font-light leading-relaxed">
+            Every Gamalu candle is an exercise in intentional slow living. From the raw harvest to the final cured pour, our materials honor both ancient perfumery and ecological balance.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          
+          <!-- Pillar 1 -->
+          <div class="bg-alabaster p-8 sm:p-10 rounded border border-warm-sand/50 shadow-luxury hover:border-gold/60 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-linen flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-obsidian transition-colors">
+              <i data-lucide="leaf" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-normal text-obsidian mb-3">100% Coconut-Soy Wax</h3>
+            <p class="text-deep-bark text-sm leading-relaxed font-light">
+              We exclusively use ethically harvested, cold-pressed coconut wax blended with golden soybean wax. Burns at an ultra-low melting temperature for an immaculate, soot-free 55+ hour experience.
+            </p>
+            <ul class="mt-4 pt-4 border-t border-warm-sand/40 text-xs text-deep-bark space-y-2">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> Clean non-toxic emissions</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> 100% biodegradable &amp; vegan</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="bg-alabaster p-8 sm:p-10 rounded border border-warm-sand/50 shadow-luxury hover:border-gold/60 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-linen flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-obsidian transition-colors">
+              <i data-lucide="flame" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-normal text-obsidian mb-3">Crackling Cedarwood Wicks</h3>
+            <p class="text-deep-bark text-sm leading-relaxed font-light">
+              Crafted from sustainably sourced, untreated FSC-certified hardwood. Each burn emits a subtle, hypnotic crackle reminiscent of an open hearth fireplace, without toxic metal cores.
+            </p>
+            <ul class="mt-4 pt-4 border-t border-warm-sand/40 text-xs text-deep-bark space-y-2">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> Gentle acoustic ambiance</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> Zero lead or zinc compounds</li>
+            </ul>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="bg-alabaster p-8 sm:p-10 rounded border border-warm-sand/50 shadow-luxury hover:border-gold/60 transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-full bg-linen flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-obsidian transition-colors">
+              <i data-lucide="droplet" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-normal text-obsidian mb-3">Phthalate-Free Botanical Oils</h3>
+            <p class="text-deep-bark text-sm leading-relaxed font-light">
+              Formulated with high concentrations of steam-distilled botanicals, tree resins, and rare florals. IFRA-certified compliant, free of phthalates, parabens, and endocrine disruptors.
+            </p>
+            <ul class="mt-4 pt-4 border-t border-warm-sand/40 text-xs text-deep-bark space-y-2">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> Multi-layered complex scent throw</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-gold mr-2"></i> Safe for pets and sensitive respiratory systems</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE PRODUCT CATALOG ("THE COLLECTION") -->
+    <section id="collection" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header & Filter Controls -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="text-xs uppercase tracking-super-wide text-gold-dark font-medium block">The Olfactory Archive</span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-obsidian mt-1">
+              Signature Candle Collection
+            </h2>
+            <p class="text-deep-bark text-sm sm:text-base font-light mt-2 max-w-xl">
+              Eight distinct olfactory narratives poured into tactile ceramic and stoneware vessels designed to be cherished for years.
+            </p>
+          </div>
+
+          <!-- Sort and Count -->
+          <div class="flex items-center space-x-4">
+            <span id="product-count" class="text-xs uppercase tracking-widest text-deep-bark font-medium">
+              Showing 8 Objects
+            </span>
+            <select id="price-sort" onchange="handleSortChange(this.value)" class="bg-linen border border-warm-sand/70 text-espresso text-xs rounded px-3 py-2 uppercase tracking-wider focus:outline-none focus:border-gold">
+              <option value="default">Sort: Curated</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="burn">Burn Time</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto pb-4 mb-10 no-scrollbar" role="tablist">
+          <button onclick="filterCategory('all', this)" class="filter-pill active px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 bg-obsidian text-alabaster shadow-sm whitespace-nowrap">
+            All Scents (<span id="count-all">8</span>)
+          </button>
+          <button onclick="filterCategory('Woody & Earthy', this)" class="filter-pill px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 bg-linen hover:bg-raw-silk text-deep-bark whitespace-nowrap">
+            Woody &amp; Earthy
+          </button>
+          <button onclick="filterCategory('Floral & Botanical', this)" class="filter-pill px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 bg-linen hover:bg-raw-silk text-deep-bark whitespace-nowrap">
+            Floral &amp; Botanical
+          </button>
+          <button onclick="filterCategory('Spiced & Warm', this)" class="filter-pill px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 bg-linen hover:bg-raw-silk text-deep-bark whitespace-nowrap">
+            Spiced &amp; Warm
+          </button>
+          <button onclick="filterCategory('Fresh & Citrus', this)" class="filter-pill px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium transition-all duration-300 bg-linen hover:bg-raw-silk text-deep-bark whitespace-nowrap">
+            Fresh &amp; Citrus
+          </button>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+          <!-- Dynamically generated via JavaScript -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INTERACTIVE OLFACTORY PYRAMID & MOOD GUIDE -->
+    <section id="scent-guide" class="py-16 md:py-24 bg-linen/70 border-y border-warm-sand/40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs uppercase tracking-super-wide text-gold-dark font-medium block">Olfactory Harmony</span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-obsidian leading-tight">
+              Curate By Mood &amp; Intention
+            </h2>
+            <p class="text-deep-bark text-sm sm:text-base font-light leading-relaxed">
+              Every blend unfurls in three deliberate atmospheric stages. Select your desired space intention to explore how notes release across hours.
+            </p>
+
+            <!-- Mood Tabs -->
+            <div class="space-y-3 pt-2">
+              <button onclick="selectMood('evening', this)" class="mood-tab active w-full text-left p-4 rounded bg-alabaster border border-gold shadow-sm flex items-center justify-between transition-all">
+                <div>
+                  <span class="font-serif text-lg font-medium text-obsidian block">Evening Warmth &amp; Intimacy</span>
+                  <span class="text-xs text-deep-bark">Best suited for dusk, dining rooms, and restorative fireside hours.</span>
+                </div>
+                <i data-lucide="moon" class="w-5 h-5 text-gold flex-shrink-0 ml-3"></i>
+              </button>
+
+              <button onclick="selectMood('focus', this)" class="mood-tab w-full text-left p-4 rounded bg-alabaster/60 border border-warm-sand/40 hover:bg-alabaster flex items-center justify-between transition-all">
+                <div>
+                  <span class="font-serif text-lg font-medium text-obsidian block">Deep Focus &amp; Grounding</span>
+                  <span class="text-xs text-deep-bark">Resinous cypress, smoked pine, and dry vetiver for clarity of mind.</span>
+                </div>
+                <i data-lucide="compass" class="w-5 h-5 text-deep-bark flex-shrink-0 ml-3"></i>
+              </button>
+
+              <button onclick="selectMood('serenity', this)" class="mood-tab w-full text-left p-4 rounded bg-alabaster/60 border border-warm-sand/40 hover:bg-alabaster flex items-center justify-between transition-all">
+                <div>
+                  <span class="font-serif text-lg font-medium text-obsidian block">Serene Renewal &amp; Breath</span>
+                  <span class="text-xs text-deep-bark">Sun-drenched fig leaf, white jasmine, and cooling sea salt driftwood.</span>
+                </div>
+                <i data-lucide="wind" class="w-5 h-5 text-deep-bark flex-shrink-0 ml-3"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Olfactory Pyramid Display -->
+          <div class="lg:col-span-7">
+            <div class="bg-alabaster p-8 sm:p-12 rounded border border-warm-sand/60 shadow-luxury relative overflow-hidden">
+              
+              <div class="flex items-center justify-between pb-6 border-b border-warm-sand/40">
+                <div>
+                  <span id="pyramid-mood-title" class="text-xs font-semibold uppercase tracking-widest text-gold-dark">Featured Mood Pairing</span>
+                  <h3 id="pyramid-candle-name" class="font-serif text-2xl sm:text-3xl font-normal text-obsidian">No. 01 — Santal &amp; Smoked Cardamom</h3>
+                </div>
+                <button id="pyramid-view-btn" onclick="openQuickView(1)" class="text-xs uppercase tracking-widest font-medium text-obsidian underline hover:text-gold transition-colors">
+                  View Profile &rarr;
+                </button>
+              </div>
+
+              <!-- Pyramid Steps -->
+              <div class="mt-8 space-y-6">
+                <!-- Top Notes -->
+                <div class="relative pl-6 border-l-2 border-gold">
+                  <div class="flex items-baseline space-x-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-gold-dark">Top Notes &bull; First 15–30 Mins</span>
+                  </div>
+                  <h4 id="pyramid-top-notes" class="font-serif text-lg text-obsidian font-medium mt-0.5">Green Cardamom &bull; Sicilian Bergamot &bull; Sweet Orange</h4>
+                  <p class="text-xs text-deep-bark mt-1">The immediate welcoming aura that greets your senses upon lighting.</p>
+                </div>
+
+                <!-- Heart Notes -->
+                <div class="relative pl-6 border-l-2 border-warm-sand">
+                  <div class="flex items-baseline space-x-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-deep-bark">Heart Notes &bull; 1–3 Hours In</span>
+                  </div>
+                  <h4 id="pyramid-heart-notes" class="font-serif text-lg text-obsidian font-medium mt-0.5">Atlas Cedarwood &bull; Egyptian Papyrus &bull; Nutmeg</h4>
+                  <p class="text-xs text-deep-bark mt-1">The true character and soul of the room while the melt pool deepens.</p>
+                </div>
+
+                <!-- Base Notes -->
+                <div class="relative pl-6 border-l-2 border-espresso">
+                  <div class="flex items-baseline space-x-2">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-espresso">Base Notes &bull; Lingering Memory</span>
+                  </div>
+                  <h4 id="pyramid-base-notes" class="font-serif text-lg text-obsidian font-medium mt-0.5">Mysore Sandalwood &bull; Golden Amber &bull; Raw Vanilla</h4>
+                  <p class="text-xs text-deep-bark mt-1">Heavy molecular resins that linger gently for hours after extinguishing.</p>
+                </div>
+              </div>
+
+              <!-- Action Bar -->
+              <div class="mt-8 pt-6 border-t border-warm-sand/40 flex items-center justify-between">
+                <div class="text-xs text-deep-bark">
+                  <span class="text-obsidian font-medium">Recommended Burn:</span> 2 to 3 consecutive hours
+                </div>
+                <button id="pyramid-add-btn" onclick="addToCart(1)" class="px-6 py-2.5 bg-obsidian text-alabaster text-xs uppercase tracking-widest font-medium rounded hover:bg-gold hover:text-obsidian transition-colors">
+                  Add This Scent (₹2,450)
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- THE CANDLE CARE & RITUAL SECTION -->
+    <section id="care-section" class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-super-wide text-gold-dark font-medium block">Vessel Longevity</span>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-light text-obsidian mt-2">
+            The Burning Ritual
+          </h2>
+          <div class="w-12 h-0.5 bg-gold mx-auto my-4"></div>
+          <p class="text-deep-bark text-sm sm:text-base font-light leading-relaxed">
+            Honoring a few mindful practices ensures your natural wax candle burns evenly, cleanly, and for its complete 55+ hour lifecycle.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div class="bg-linen p-6 rounded border border-warm-sand/40 hover:shadow-luxury transition-all">
+            <span class="font-serif text-3xl text-gold-dark block mb-3">01</span>
+            <h3 class="font-serif text-xl font-normal text-obsidian mb-2">The Memory Melt</h3>
+            <p class="text-xs text-deep-bark leading-relaxed font-light">
+              On the very first burn, allow the candle to burn for 3 to 4 hours until the melted wax pool reaches all vessel edges. This prevents tunneling forever.
+            </p>
+          </div>
+
+          <div class="bg-linen p-6 rounded border border-warm-sand/40 hover:shadow-luxury transition-all">
+            <span class="font-serif text-3xl text-gold-dark block mb-3">02</span>
+            <h3 class="font-serif text-xl font-normal text-obsidian mb-2">Trim the Cedarwood</h3>
+            <p class="text-xs text-deep-bark leading-relaxed font-light">
+              Before each subsequent lighting, gently snap or pinch off the charred top of the cedarwood wick to 1/8–1/4 inch. This maintains an intimate, smoke-free flame.
+            </p>
+          </div>
+
+          <div class="bg-linen p-6 rounded border border-warm-sand/40 hover:shadow-luxury transition-all">
+            <span class="font-serif text-3xl text-gold-dark block mb-3">03</span>
+            <h3 class="font-serif text-xl font-normal text-obsidian mb-2">Snuff, Don't Blow</h3>
+            <p class="text-xs text-deep-bark leading-relaxed font-light">
+              Use a metal bell snuffer or simply place the vessel lid gently on top to extinguish the flame without scattering carbon particles or releasing acrid smoke.
+            </p>
+          </div>
+
+          <div class="bg-linen p-6 rounded border border-warm-sand/40 hover:shadow-luxury transition-all">
+            <span class="font-serif text-3xl text-gold-dark block mb-3">04</span>
+            <h3 class="font-serif text-xl font-normal text-obsidian mb-2">The Vessel's Second Life</h3>
+            <p class="text-xs text-deep-bark leading-relaxed font-light">
+              When 1/2 inch of wax remains, soak the vessel in warm hot water. Clean thoroughly to repurpose as an espresso cup, desktop brush pot, or succulent planter.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDITORIAL TESTIMONIALS & PRESS -->
+    <section id="reviews" class="py-16 md:py-24 bg-espresso text-alabaster border-t border-obsidian">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        
+        <div class="inline-flex items-center space-x-1 text-gold mb-6">
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+          <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+        </div>
+
+        <blockquote class="font-serif text-2xl sm:text-3xl md:text-4xl font-light italic leading-relaxed max-w-3xl mx-auto">
+          &ldquo;Gamalu by AB has achieved what few luxury fragrance houses manage: a candle that is as acoustically soothing as it is olfactory poetry. The Santal &amp; Smoked Cardamom transforms an entire floor.&rdquo;
+        </blockquote>
+
+        <div class="mt-8">
+          <p class="text-xs uppercase tracking-super-wide text-gold font-medium">Vogue Living &bull; Sensory Archive</p>
+          <p class="text-[11px] text-warm-sand/60 mt-1">Design &amp; Olfactory Accolades</p>
+        </div>
+
+        <!-- Press Logos / Editorial badges -->
+        <div class="mt-16 pt-12 border-t border-deep-bark/40 grid grid-cols-2 sm:grid-cols-4 gap-8 items-center text-warm-sand/50 text-xs tracking-super-wide uppercase">
+          <span class="hover:text-gold transition-colors">Architectural Digest</span>
+          <span class="hover:text-gold transition-colors">Elle Décor India</span>
+          <span class="hover:text-gold transition-colors">The Monocle Journal</span>
+          <span class="hover:text-gold transition-colors">Harper's Bazaar</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ARTISANAL NEWSLETTER / SENSORY JOURNAL -->
+    <section class="py-16 bg-linen border-b border-warm-sand/40">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <span class="text-xs uppercase tracking-super-wide text-gold-dark font-medium block">The Sensory Journal</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light text-obsidian mt-2">
+          Receive Secret Micro-Batch Dispatches
+        </h2>
+        <p class="text-deep-bark text-sm font-light mt-3 max-w-lg mx-auto">
+          Members receive early access to seasonal numbered pours, private masterclasses, and curated botanical olfactory notes.
+        </p>
+
+        <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="mt-8 flex flex-col sm:flex-row items-center justify-center max-w-md mx-auto gap-3">
+          <input 
+            type="email" 
+            id="newsletter-email" 
+            required 
+            placeholder="Enter your email address" 
+            class="w-full px-4 py-3 bg-alabaster border border-warm-sand text-espresso text-xs rounded focus:outline-none focus:border-gold placeholder:text-deep-bark/50 tracking-wider"
+          >
+          <button type="submit" class="w-full sm:w-auto px-6 py-3 bg-obsidian text-alabaster hover:bg-gold hover:text-obsidian text-xs uppercase tracking-widest font-medium rounded transition-colors whitespace-nowrap">
+            Subscribe
+          </button>
+        </form>
+        <p id="newsletter-msg" class="text-xs text-gold-dark font-medium mt-3 hidden"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LUXURY EDITORIAL FOOTER -->
+  <footer class="bg-obsidian text-alabaster pt-16 pb-12 border-t border-deep-bark/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-deep-bark/40">
+        
+        <!-- Brand Info -->
+        <div class="md:col-span-5 space-y-4">
+          <span class="font-serif text-3xl tracking-[0.25em] font-light text-alabaster uppercase block">GAMALU</span>
+          <span class="font-sans text-[10px] tracking-super-wide text-gold uppercase -mt-2 block">by AB &bull; Artisanal Luxury</span>
+          <p class="text-xs text-[#D1C7B8] leading-relaxed max-w-sm font-light pt-2">
+            Quiet luxury artisanal candles hand-poured in micro-batches. Combining slow-cured coconut-soy wax, crackling cedarwood wicks, and rare botanical perfumery oils.
+          </p>
+          <div class="flex items-center space-x-4 pt-2 text-[#D1C7B8]">
+            <a href="#" class="hover:text-gold transition-colors" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            <a href="#" class="hover:text-gold transition-colors" aria-label="Pinterest"><i data-lucide="pin" class="w-4 h-4"></i></a>
+            <a href="#" class="hover:text-gold transition-colors" aria-label="Mail"><i data-lucide="mail" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="md:col-span-2 space-y-3">
+          <h4 class="text-xs uppercase tracking-widest font-semibold text-gold">Archive</h4>
+          <ul class="text-xs text-[#D1C7B8] space-y-2 font-light">
+            <li><a href="#collection" class="hover:text-alabaster transition-colors">The Collection</a></li>
+            <li><a href="#scent-guide" class="hover:text-alabaster transition-colors">Scent Pyramid</a></li>
+            <li><a href="#craftsmanship" class="hover:text-alabaster transition-colors">Our Botanical Wax</a></li>
+            <li><a href="#care-section" class="hover:text-alabaster transition-colors">The Burn Ritual</a></li>
+          </ul>
+        </div>
+
+        <!-- Concierge & Care -->
+        <div class="md:col-span-2 space-y-3">
+          <h4 class="text-xs uppercase tracking-widest font-semibold text-gold">Concierge</h4>
+          <ul class="text-xs text-[#D1C7B8] space-y-2 font-light">
+            <li><span class="hover:text-alabaster transition-colors cursor-pointer" onclick="showToast('Concierge: concierge@gamalubyab.com')">Private Bespoke Orders</span></li>
+            <li><span class="hover:text-alabaster transition-colors cursor-pointer" onclick="showToast('Complimentary shipping on orders over ₹3,500')">Shipping &amp; Delivery</span></li>
+            <li><span class="hover:text-alabaster transition-colors cursor-pointer" onclick="showToast('Every order includes a hand-calligraphed note upon request')">Gift Packaging</span></li>
+            <li><span class="hover:text-alabaster transition-colors cursor-pointer" onclick="showToast('Contact us at concierge@gamalubyab.com')">Care Inquiries</span></li>
+          </ul>
+        </div>
+
+        <!-- Sustainability Promise -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-xs uppercase tracking-widest font-semibold text-gold">Artisanal Promise</h4>
+          <p class="text-xs text-[#D1C7B8] leading-relaxed font-light">
+            All vessels are wheel-thrown or slip-cast stoneware designed for heirloom reuse. Hand-poured in micro-batches of only 120 candles per pour.
+          </p>
+          <div class="p-3 bg-espresso/60 rounded border border-deep-bark/60 text-[11px] text-warm-sand">
+            <span class="text-gold font-medium">Safe Checkout:</span> Secured with 256-bit SSL encryption. Pan-India climate-controlled transit.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-deep-bark">
+        <p>&copy; 2026 GAMALU by AB. All Rights Reserved. Crafted with quiet intention.</p>
+        <p class="mt-2 sm:mt-0 text-[#D1C7B8]/60">Hand-Poured &bull; 100% Coconut-Soy Wax &bull; Cedarwood Wicks</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- SLIDE-OVER SHOPPING BAG DRAWER (Right to Left)                             -->
+  <!-- ========================================================================= -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/60 backdrop-blur-sm" aria-hidden="true" onclick="toggleCartDrawer(false)">
+  </div>
+
+  <aside id="cart-drawer" class="fixed inset-y-0 right-0 max-w-md w-full bg-alabaster shadow-2xl z-50 flex flex-col transform translate-x-full transition-transform duration-300 ease-out border-l border-warm-sand/50" aria-label="Shopping Bag">
+    
+    <!-- Drawer Header -->
+    <div class="p-6 border-b border-warm-sand/40 flex items-center justify-between bg-linen">
+      <div class="flex items-center space-x-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-obsidian"></i>
+        <h3 class="font-serif text-xl font-medium text-obsidian tracking-wide">Your Shopping Bag</h3>
+        <span id="drawer-item-count" class="text-xs text-deep-bark font-medium bg-sandstone/60 px-2 py-0.5 rounded-full">0 items</span>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="p-1.5 text-deep-bark hover:text-obsidian rounded-full hover:bg-raw-silk/50 transition-colors" aria-label="Close Shopping Bag">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Complimentary Shipping Progress Bar -->
+    <div class="p-4 bg-alabaster border-b border-warm-sand/30">
+      <div class="flex items-center justify-between text-xs mb-1.5">
+        <span id="shipping-progress-text" class="text-deep-bark font-medium">Add ₹3,500 for Complimentary Shipping</span>
+        <span id="shipping-progress-pct" class="text-gold-dark font-semibold">0%</span>
+      </div>
+      <div class="w-full h-1.5 bg-sandstone/60 rounded-full overflow-hidden">
+        <div id="shipping-progress-bar" class="h-full bg-gold transition-all duration-500" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll Area -->
+    <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-6">
+      <!-- Populated via renderCart() -->
+    </div>
+
+    <!-- Cart Footer & Checkout Button -->
+    <div class="p-6 border-t border-warm-sand/40 bg-linen/50 space-y-4">
+      <div class="space-y-2 text-xs">
+        <div class="flex justify-between text-deep-bark">
+          <span>Subtotal</span>
+          <span id="cart-subtotal-price" class="font-medium text-obsidian">₹0</span>
+        </div>
+        <div class="flex justify-between text-deep-bark">
+          <span>Complimentary Gift Wrap</span>
+          <span class="text-gold font-medium">Included</span>
+        </div>
+        <div class="flex justify-between text-deep-bark">
+          <span>Shipping</span>
+          <span id="cart-shipping-fee" class="font-medium text-obsidian">Calculated next</span>
+        </div>
+        <div class="flex justify-between text-sm font-semibold text-obsidian pt-2 border-t border-warm-sand/40">
+          <span>Estimated Total</span>
+          <span id="cart-total-price">₹0</span>
+        </div>
+      </div>
+
+      <button id="cart-checkout-btn" onclick="openCheckoutModal()" class="w-full py-4 bg-obsidian hover:bg-espresso text-alabaster text-xs uppercase tracking-widest font-medium rounded transition-all duration-300 shadow-luxury flex items-center justify-center space-x-2">
+        <span>Proceed to Checkout</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </button>
+      
+      <p class="text-[10px] text-center text-deep-bark/70 flex items-center justify-center">
+        <i data-lucide="shield" class="w-3.5 h-3.5 mr-1 text-gold"></i>
+        Climate-controlled express packaging &bull; 100% Guaranteed Safe Arrival
+      </p>
+    </div>
+
+  </aside>
+
+  <!-- ========================================================================= -->
+  <!-- QUICK VIEW / SCENT PROFILE MODAL                                          -->
+  <!-- ========================================================================= -->
+  <div id="quick-view-modal" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" aria-hidden="true">
+    <div id="quick-view-panel" class="bg-alabaster max-w-3xl w-full rounded shadow-2xl overflow-hidden border border-warm-sand/60 max-h-[90vh] flex flex-col transform scale-95 transition-transform duration-300 pointer-events-auto">
+      
+      <div class="p-4 sm:p-5 border-b border-warm-sand/40 flex items-center justify-between bg-linen">
+        <span class="text-xs uppercase tracking-widest text-gold-dark font-medium">Olfactory Profile &amp; Vessel Specs</span>
+        <button onclick="closeQuickView()" class="p-1 text-deep-bark hover:text-obsidian" aria-label="Close Quick View">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-y-auto p-6 sm:p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          <!-- Image -->
+          <div class="relative rounded overflow-hidden aspect-square bg-linen">
+            <img id="qv-image" src="" alt="Candle Profile" class="w-full h-full object-cover">
+            <span id="qv-family-badge" class="absolute top-3 left-3 bg-obsidian/85 text-alabaster text-[10px] uppercase tracking-widest px-2.5 py-1 rounded">
+              Woody &amp; Earthy
+            </span>
+          </div>
+
+          <!-- Scent Pyramid & Details -->
+          <div class="space-y-4">
+            <div>
+              <span id="qv-category" class="text-xs uppercase tracking-widest text-deep-bark">Signature Candle</span>
+              <h3 id="qv-title" class="font-serif text-2xl sm:text-3xl font-normal text-obsidian mt-1">Santal &amp; Smoked Cardamom</h3>
+              <p id="qv-price" class="font-serif text-xl text-gold-dark font-semibold mt-1">₹2,450</p>
+            </div>
+
+            <p id="qv-desc" class="text-xs text-deep-bark leading-relaxed font-light">
+              Deep, brooding cardamom pods crackle gently beside atlas cedarwood and creamy Australian sandalwood.
+            </p>
+
+            <!-- Olfactory Breakdown -->
+            <div class="p-4 bg-linen rounded border border-warm-sand/50 space-y-2 text-xs">
+              <div>
+                <span class="font-semibold text-obsidian uppercase tracking-wider text-[10px] text-gold-dark block">Top Notes:</span>
+                <span id="qv-top" class="text-deep-bark">Cardamom, Bergamot, Pink Peppercorn</span>
+              </div>
+              <div>
+                <span class="font-semibold text-obsidian uppercase tracking-wider text-[10px] text-deep-bark block">Heart Notes:</span>
+                <span id="qv-heart" class="text-deep-bark">Cedarwood Atlas, Smoked Papyrus</span>
+              </div>
+              <div>
+                <span class="font-semibold text-obsidian uppercase tracking-wider text-[10px] text-espresso block">Base Notes:</span>
+                <span id="qv-base" class="text-deep-bark">Australian Sandalwood, Raw Amber</span>
+              </div>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="grid grid-cols-2 gap-2 text-xs pt-1">
+              <div class="p-2 bg-alabaster border border-warm-sand/40 rounded">
+                <span class="text-[10px] uppercase tracking-wider text-deep-bark/70 block">Burn Time</span>
+                <span id="qv-burn" class="font-medium text-obsidian">55+ Hours</span>
+              </div>
+              <div class="p-2 bg-alabaster border border-warm-sand/40 rounded">
+                <span class="text-[10px] uppercase tracking-wider text-deep-bark/70 block">Net Weight</span>
+                <span id="qv-weight" class="font-medium text-obsidian">220g / 7.8 oz</span>
+              </div>
+              <div class="p-2 bg-alabaster border border-warm-sand/40 rounded">
+                <span class="text-[10px] uppercase tracking-wider text-deep-bark/70 block">Wick</span>
+                <span class="font-medium text-obsidian">FSC Cedarwood</span>
+              </div>
+              <div class="p-2 bg-alabaster border border-warm-sand/40 rounded">
+                <span class="text-[10px] uppercase tracking-wider text-deep-bark/70 block">Wax</span>
+                <span class="font-medium text-obsidian">100% Coconut-Soy</span>
+              </div>
+            </div>
+
+            <!-- Add from Modal -->
+            <div class="pt-2 flex items-center space-x-3">
+              <div class="flex items-center border border-warm-sand rounded bg-linen">
+                <button onclick="decrementModalQty()" class="px-3 py-2 text-deep-bark hover:text-obsidian">-</button>
+                <span id="modal-qty" class="px-2 text-xs font-medium text-obsidian">1</span>
+                <button onclick="incrementModalQty()" class="px-3 py-2 text-deep-bark hover:text-obsidian">+</button>
+              </div>
+              <button id="qv-add-btn" onclick="addModalItemToCart()" class="flex-1 py-3 bg-obsidian hover:bg-gold hover:text-obsidian text-alabaster text-xs uppercase tracking-widest font-medium rounded transition-colors">
+                Add to Bag
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CHECKOUT MODAL                                                            -->
+  <!-- ========================================================================= -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6" aria-hidden="true">
+    <div id="checkout-panel" class="bg-alabaster max-w-2xl w-full rounded shadow-2xl overflow-hidden border border-warm-sand/60 max-h-[92vh] flex flex-col transform scale-95 transition-transform duration-300 pointer-events-auto">
+      
+      <!-- Checkout Header -->
+      <div class="p-5 border-b border-warm-sand/40 flex items-center justify-between bg-linen">
+        <div>
+          <span class="text-[10px] uppercase tracking-widest text-gold-dark font-medium block">Secure Luxury Ordering</span>
+          <h3 class="font-serif text-xl sm:text-2xl font-normal text-obsidian">Artisanal Checkout</h3>
+        </div>
+        <button onclick="closeCheckoutModal()" class="p-1 text-deep-bark hover:text-obsidian" aria-label="Close Checkout">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Checkout Form -->
+      <form id="checkout-form" onsubmit="handlePlaceOrder(event)" class="flex-1 overflow-y-auto p-6 space-y-6">
+        
+        <!-- Order Items Preview Banner -->
+        <div class="p-4 bg-linen rounded border border-warm-sand/50 text-xs flex items-center justify-between">
+          <div>
+            <span class="font-medium text-obsidian">Order Summary:</span>
+            <span id="checkout-item-summary" class="text-deep-bark ml-1">2 candles in bag</span>
+          </div>
+          <span id="checkout-total-banner" class="font-serif text-base font-semibold text-obsidian">₹5,050</span>
+        </div>
+
+        <!-- Section 1: Customer Details -->
+        <div class="space-y-4">
+          <h4 class="font-serif text-lg font-medium text-obsidian border-b border-warm-sand/40 pb-1">
+            1. Client &amp; Delivery Information
+          </h4>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="client-name" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">Full Name *</label>
+              <input type="text" id="client-name" required placeholder="Aarav Sharma" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+              <span id="err-name" class="text-[10px] text-red-600 hidden mt-1">Please enter your full name</span>
+            </div>
+
+            <div>
+              <label for="client-email" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">Email Address (for Receipt) *</label>
+              <input type="email" id="client-email" required placeholder="aarav@sanctuary.com" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+              <span id="err-email" class="text-[10px] text-red-600 hidden mt-1">Please enter a valid email</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="client-phone" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">Phone Number (10 Digits) *</label>
+              <input type="tel" id="client-phone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+              <span id="err-phone" class="text-[10px] text-red-600 hidden mt-1">Please enter a 10-digit mobile number</span>
+            </div>
+
+            <div>
+              <label for="client-pin" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">PIN / Postal Code *</label>
+              <input type="text" id="client-pin" required pattern="[0-9]{6}" placeholder="560001" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+              <span id="err-pin" class="text-[10px] text-red-600 hidden mt-1">Please enter a 6-digit PIN code</span>
+            </div>
+          </div>
+
+          <div>
+            <label for="client-address" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">Complete Street Address &amp; Landmark *</label>
+            <input type="text" id="client-address" required placeholder="Apt 4B, Emerald Court, 80 Feet Road, Indiranagar" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+            <span id="err-address" class="text-[10px] text-red-600 hidden mt-1">Please provide complete address for white-glove delivery</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="client-city" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">City *</label>
+              <input type="text" id="client-city" required placeholder="Bengaluru" class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+            </div>
+
+            <div>
+              <label for="client-state" class="block text-[11px] uppercase tracking-wider font-medium text-deep-bark mb-1">State *</label>
+              <select id="client-state" required class="w-full px-3 py-2.5 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold">
+                <option value="Karnataka">Karnataka</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Delhi">Delhi NCR</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Kerala">Kerala</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Other">Other State</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Complimentary Gift Note Option -->
+        <div class="p-4 bg-linen rounded border border-warm-sand/50 space-y-3">
+          <label class="flex items-center space-x-3 cursor-pointer">
+            <input type="checkbox" id="gift-toggle" onchange="toggleGiftField(this.checked)" class="rounded text-gold focus:ring-gold w-4 h-4">
+            <span class="text-xs font-medium text-obsidian">This is an artisanal gift &mdash; include hand-calligraphed note</span>
+          </label>
+
+          <div id="gift-field-wrapper" class="hidden pt-2">
+            <label for="gift-note" class="block text-[11px] text-deep-bark mb-1">Hand-Calligraphed Message (Max 140 chars):</label>
+            <textarea id="gift-note" maxlength="140" rows="2" placeholder="e.g. May your new home be filled with gentle light and serenity. With love, Priya." class="w-full px-3 py-2 bg-alabaster border border-warm-sand rounded text-xs text-espresso focus:outline-none focus:border-gold"></textarea>
+          </div>
+        </div>
+
+        <!-- Section 3: Payment Method Selection -->
+        <div class="space-y-4">
+          <h4 class="font-serif text-lg font-medium text-obsidian border-b border-warm-sand/40 pb-1">
+            2. Payment Method
+          </h4>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <label class="payment-method-card active p-3 rounded border border-gold bg-alabaster cursor-pointer flex flex-col items-center text-center space-y-2">
+              <input type="radio" name="payment_method" value="UPI" checked onchange="changePaymentMethod('UPI')" class="hidden">
+              <i data-lucide="smartphone" class="w-5 h-5 text-gold"></i>
+              <span class="text-xs font-semibold text-obsidian">UPI / QR</span>
+              <span class="text-[10px] text-deep-bark/70">Instant &bull; GPay, PhonePe</span>
+            </label>
+
+            <label class="payment-method-card p-3 rounded border border-warm-sand/60 bg-linen cursor-pointer flex flex-col items-center text-center space-y-2">
+              <input type="radio" name="payment_method" value="Card" onchange="changePaymentMethod('Card')" class="hidden">
+              <i data-lucide="credit-card" class="w-5 h-5 text-deep-bark"></i>
+              <span class="text-xs font-semibold text-obsidian">Credit / Debit</span>
+              <span class="text-[10px] text-deep-bark/70">Visa, Mastercard, Amex</span>
+            </label>
+
+            <label class="payment-method-card p-3 rounded border border-warm-sand/60 bg-linen cursor-pointer flex flex-col items-center text-center space-y-2">
+              <input type="radio" name="payment_method" value="COD" onchange="changePaymentMethod('COD')" class="hidden">
+              <i data-lucide="banknote" class="w-5 h-5 text-deep-bark"></i>
+              <span class="text-xs font-semibold text-obsidian">Cash on Delivery</span>
+              <span class="text-[10px] text-deep-bark/70">Pan-India verified</span>
+            </label>
+          </div>
+
+          <!-- Dynamic Payment Details Box -->
+          <div id="payment-details-box" class="p-4 bg-linen rounded border border-warm-sand/50 text-xs">
+            <div id="pay-upi-view">
+              <span class="font-medium text-obsidian block mb-1">Enter UPI ID / VPA:</span>
+              <input type="text" id="upi-vpa" placeholder="username@okhdfcbank" class="w-full px-3 py-2 bg-alabaster border border-warm-sand rounded text-xs text-espresso">
+              <span class="text-[10px] text-deep-bark/80 block mt-1">A payment authorization request will be transmitted directly to your mobile app.</span>
+            </div>
+
+            <div id="pay-card-view" class="hidden space-y-3">
+              <div>
+                <label class="block text-[10px] uppercase text-deep-bark">Card Number</label>
+                <input type="text" maxlength="19" placeholder="4111 2222 3333 4444" class="w-full px-3 py-2 bg-alabaster border border-warm-sand rounded text-xs">
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[10px] uppercase text-deep-bark">Expiry (MM/YY)</label>
+                  <input type="text" maxlength="5" placeholder="08/28" class="w-full px-3 py-2 bg-alabaster border border-warm-sand rounded text-xs">
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase text-deep-bark">CVV</label>
+                  <input type="password" maxlength="4" placeholder="***" class="w-full px-3 py-2 bg-alabaster border border-warm-sand rounded text-xs">
+                </div>
+              </div>
+            </div>
+
+            <div id="pay-cod-view" class="hidden">
+              <p class="text-deep-bark leading-relaxed">
+                Pay in cash or via mobile UPI upon hand-delivery by our temperature-controlled courier partner.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 border-t border-warm-sand/40">
+          <button type="submit" id="place-order-submit-btn" class="w-full py-4 bg-obsidian hover:bg-gold hover:text-obsidian text-alabaster text-xs uppercase tracking-widest font-medium rounded transition-all duration-300 shadow-luxury flex items-center justify-center space-x-2">
+            <span id="submit-btn-text">Place Luxury Order</span>
+            <i data-lucide="check" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- ORDER CONFIRMATION DIGITAL RECEIPT MODAL                                  -->
+  <!-- ========================================================================= -->
+  <div id="receipt-modal" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6" aria-hidden="true">
+    <div id="receipt-panel" class="bg-alabaster max-w-xl w-full rounded shadow-2xl overflow-hidden border border-warm-sand/60 max-h-[92vh] flex flex-col transform scale-95 transition-transform duration-300 pointer-events-auto">
+      
+      <!-- Receipt Header -->
+      <div class="p-6 bg-linen text-center border-b border-warm-sand/50 relative">
+        <button onclick="closeReceiptModal()" class="no-print absolute top-4 right-4 p-1 text-deep-bark hover:text-obsidian" aria-label="Close Receipt">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <span class="inline-block w-8 h-8 rounded-full bg-gold/20 text-gold p-1.5 mb-2">
+          <i data-lucide="check" class="w-5 h-5 mx-auto"></i>
+        </span>
+        <h3 class="font-serif text-2xl sm:text-3xl font-light text-obsidian tracking-wide uppercase">GAMALU</h3>
+        <p class="text-[10px] tracking-super-wide text-deep-bark uppercase">by AB &bull; Order Confirmation</p>
+      </div>
+
+      <!-- Printable Receipt Body -->
+      <div class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 text-xs text-deep-bark">
+        
+        <div class="flex items-center justify-between pb-4 border-b border-warm-sand/40">
+          <div>
+            <span class="text-[10px] uppercase text-deep-bark/70 block">Order Identifier</span>
+            <span id="receipt-order-id" class="font-serif text-lg font-semibold text-obsidian">#GAB-8492</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] uppercase text-deep-bark/70 block">Date of Purchase</span>
+            <span id="receipt-date" class="font-medium text-obsidian">Nov 21, 2026</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-[10px] uppercase font-semibold text-gold-dark tracking-wider block mb-2">Delivery Destination</span>
+          <p id="receipt-client-info" class="text-obsidian font-medium leading-relaxed">Aarav Sharma &bull; 9876543210</p>
+          <p id="receipt-address" class="text-deep-bark leading-relaxed">Apt 4B, Emerald Court, Indiranagar, Bengaluru, 560001</p>
+        </div>
+
+        <!-- Gift Note Notice if applied -->
+        <div id="receipt-gift-preview" class="p-3 bg-linen rounded border border-warm-sand/40 italic hidden">
+          <span class="text-[10px] not-italic uppercase tracking-wider text-gold-dark font-semibold block mb-0.5">Calligraphed Note:</span>
+          <p id="receipt-gift-text" class="text-espresso font-serif">&ldquo;&rdquo;</p>
+        </div>
+
+        <!-- Ordered Items Summary Table -->
+        <div>
+          <span class="text-[10px] uppercase font-semibold text-deep-bark tracking-wider block mb-2">Acquired Olfactory Objects</span>
+          <div id="receipt-items-list" class="space-y-2 border-t border-b border-warm-sand/40 py-3">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Financial Breakdown -->
+        <div class="space-y-1.5 text-right pt-1">
+          <div class="flex justify-between">
+            <span>Subtotal:</span>
+            <span id="receipt-subtotal" class="font-medium text-obsidian">₹0</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Climate-Controlled Delivery:</span>
+            <span id="receipt-shipping" class="font-medium text-obsidian">Complimentary</span>
+          </div>
+          <div class="flex justify-between text-sm font-semibold text-obsidian pt-2 border-t border-warm-sand/40">
+            <span>Amount Paid:</span>
+            <span id="receipt-total" class="text-gold-dark font-serif text-lg">₹0</span>
+          </div>
+          <div class="flex justify-between text-[11px] text-deep-bark/70">
+            <span>Payment Status:</span>
+            <span id="receipt-payment-method" class="text-green-700 font-medium">Authorized via UPI</span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-linen rounded border border-warm-sand/40 text-[11px] text-deep-bark text-center">
+          <p>Estimated dispatch: 24–48 hours in insulated, temperature-controlled packaging.</p>
+        </div>
+
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="no-print p-4 bg-linen border-t border-warm-sand/40 flex items-center space-x-3">
+        <button onclick="window.print()" class="flex-1 py-3 border border-deep-bark/40 hover:bg-alabaster text-obsidian text-xs uppercase tracking-widest font-medium rounded transition-colors flex items-center justify-center space-x-2">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print Receipt</span>
+        </button>
+        <button onclick="closeReceiptModal()" class="flex-1 py-3 bg-obsidian hover:bg-gold hover:text-obsidian text-alabaster text-xs uppercase tracking-widest font-medium rounded transition-colors">
+          Continue Exploring
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SEARCH MODAL                                                              -->
+  <!-- ========================================================================= -->
+  <div id="search-modal" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 bg-obsidian/70 backdrop-blur-sm flex items-start justify-center pt-20 p-4" aria-hidden="true">
+    <div id="search-panel" class="bg-alabaster max-w-xl w-full rounded shadow-2xl overflow-hidden border border-warm-sand/60 transform -translate-y-4 transition-transform duration-300 pointer-events-auto">
+      <div class="p-4 border-b border-warm-sand/40 flex items-center space-x-3">
+        <i data-lucide="search" class="w-5 h-5 text-deep-bark"></i>
+        <input 
+          type="text" 
+          id="search-input" 
+          oninput="handleSearch(this.value)" 
+          placeholder="Search by note (cardamom, oudh, jasmine) or scent family..." 
+          class="flex-1 bg-transparent text-sm text-espresso focus:outline-none placeholder:text-deep-bark/50 font-sans"
+        >
+        <button onclick="toggleSearchModal(false)" class="p-1 text-deep-bark hover:text-obsidian">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div id="search-results" class="max-h-72 overflow-y-auto p-4 space-y-2 text-xs">
+        <p class="text-deep-bark/60 text-center py-4">Type to filter candles across olfactory accords...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CUSTOM TOAST NOTIFICATION CONTAINER                                       -->
+  <!-- ========================================================================= -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-3 pointer-events-none max-w-sm w-full">
+    <!-- Populated dynamically by showToast() -->
+  </div>
+
+  <!-- JAVASCRIPT: APPLICATION STATE & INTERACTION LOGIC -->
+  <script>
+    // ==========================================
+    // 1. SIGNATURE PRODUCT DATABASE
+    // ==========================================
+    const PRODUCTS = [
+      {
+        id: 1,
+        title: "No. 01 — Santal & Smoked Cardamom",
+        family: "Woody & Earthy",
+        price: 2450,
+        weight: "220g / 7.8 oz",
+        burnTime: "55 Hours",
+        vessel: "Charcoal Matte Stoneware",
+        image: "https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Green Cardamom • Atlas Cedar • Raw Sandalwood",
+        desc: "A contemplative slow burn evoking ancient library shelves and mountain cedar cabins. Fresh crushed cardamom opens into smoky resinous woods and a lingering creamy amber embrace.",
+        topNotes: "Green Cardamom, Sicilian Bergamot, Pink Peppercorn",
+        heartNotes: "Cedarwood Atlas, Smoked Papyrus, Spiced Nutmeg",
+        baseNotes: "Mysore Sandalwood, Raw Amber, Madagascar Vanilla",
+        mood: "Evening Sanctuary",
+        intensity: "4 / 5"
+      },
+      {
+        id: 2,
+        title: "No. 02 — Fig Leaf & Solar Jasmine",
+        family: "Floral & Botanical",
+        price: 2600,
+        weight: "220g / 7.8 oz",
+        burnTime: "55 Hours",
+        vessel: "Bisque Terracotta Ceramic",
+        image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Wild Fig Leaf • Solar Jasmine • Coconut Water",
+        desc: "A sun-drenched Mediterranean reverie. Crushed emerald fig leaves and night-blooming jasmine blossoms resting over a sheer veil of warm coconut milk and clean cedar bark.",
+        topNotes: "Wild Fig Leaf, Petitgrain, Green Almond",
+        heartNotes: "Night-Blooming Jasmine, Neroli Petals, Dewy Rose",
+        baseNotes: "Coconut Water, White Cedarwood, Sheer Musk",
+        mood: "Serene Renewal",
+        intensity: "3 / 5"
+      },
+      {
+        id: 3,
+        title: "No. 03 — Hinoki Wood & Forest Mist",
+        family: "Woody & Earthy",
+        price: 2850,
+        weight: "220g / 7.8 oz",
+        burnTime: "55 Hours",
+        vessel: "Raw Basalt Stoneware",
+        image: "https://images.unsplash.com/photo-1508759073847-9ca702cec7d2?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Japanese Hinoki • Smoked Pine • Earthy Vetiver",
+        desc: "Inspired by sacred onsen baths in the cedar valleys of Nagano. Resinous Japanese cypress paired with smoked pine needle incense and damp morning soil.",
+        topNotes: "Japanese Hinoki, Elemi Gum, Fresh Thyme",
+        heartNotes: "Smoked Pine Needle, Siberian Fir, Florentine Iris",
+        baseNotes: "Haitian Vetiver Root, Frankincense Tear, Tree Moss",
+        mood: "Deep Focus",
+        intensity: "4 / 5"
+      },
+      {
+        id: 4,
+        title: "No. 04 — Amber Resin & Clove Hearth",
+        family: "Spiced & Warm",
+        price: 2950,
+        weight: "220g / 7.8 oz",
+        burnTime: "55 Hours",
+        vessel: "Hand-Spun Brushed Brass",
+        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Golden Amber • Clove Bud • Sweet Cinnamon",
+        desc: "Rich, enveloping warmth for cold evenings. Aged tree amber crystallized with aromatic clove buds, toasted cinnamon bark, and rich Siam benzoin balm.",
+        topNotes: "Bitter Orange Zest, Ceylon Cinnamon, Star Anise",
+        heartNotes: "Zanzibar Clove Bud, Golden Amber, Labdanum",
+        baseNotes: "Benzoin Resin, Bourbon Vanilla, Patchouli Leaf",
+        mood: "Evening Sanctuary",
+        intensity: "5 / 5"
+      },
+      {
+        id: 5,
+        title: "No. 05 — Bergamot Zest & White Vetiver",
+        family: "Fresh & Citrus",
+        price: 2350,
+        weight: "220g / 7.8 oz",
+        burnTime: "50 Hours",
+        vessel: "Frosted Bone Porcelain",
+        image: "https://images.unsplash.com/photo-1605651202774-7d573fd3f12d?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Calabrian Bergamot • White Tea • Crisp Vetiver",
+        desc: "An invigorating burst of early morning vitality. Cold-pressed Italian citrus oils infused with crystalline white tea leaves and cleanly shaved Haitian vetiver roots.",
+        topNotes: "Calabrian Bergamot, Pink Grapefruit, Coriander Seed",
+        heartNotes: "Silver Needle White Tea, Lily of the Valley, Cardamom",
+        baseNotes: "Bleached Vetiver, Blonde Woods, Crisp Linen Musk",
+        mood: "Serene Renewal",
+        intensity: "3 / 5"
+      },
+      {
+        id: 6,
+        title: "No. 06 — Oudh Imperial & Damask Rose",
+        family: "Floral & Botanical",
+        price: 3200,
+        weight: "240g / 8.5 oz",
+        burnTime: "60 Hours",
+        vessel: "Glazed Espresso Stoneware",
+        image: "https://images.unsplash.com/photo-1570823635306-250abb06d4b3?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Bulgarian Rose • Assam Oudh • Saffron Stigma",
+        desc: "A decadent, intoxicating nocturnal composition. Velvety crimson damask rose petals steeped in ancient wild-harvested Assam agarwood and golden saffron threads.",
+        topNotes: "Saffron Stigma, Bulgarian Damask Rose, Dried Plum",
+        heartNotes: "Smoky Assam Oudh, Rock Rose Labdanum, Geranium",
+        baseNotes: "Dark Indonesian Patchouli, Castoreum Accord, Amber",
+        mood: "Intimate Reverie",
+        intensity: "5 / 5"
+      },
+      {
+        id: 7,
+        title: "No. 07 — Smoked Vanilla & Bourbon Tobacco",
+        family: "Spiced & Warm",
+        price: 2750,
+        weight: "220g / 7.8 oz",
+        burnTime: "55 Hours",
+        vessel: "Matte Umber Glaze",
+        image: "https://images.unsplash.com/photo-1577937927133-66ef06acdf18?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Madagascar Vanilla • Aged Tobacco • Tonka Bean",
+        desc: "Warm decadence without cloying sweetness. Cured Virginia tobacco leaves aged in oak bourbon barrels, dusted with ground cocoa nibs and smoked dark vanilla bean pods.",
+        topNotes: "Blonde Tobacco Blossom, Cocoa Nib, Mandarin Peel",
+        heartNotes: "Charred Oak Barrel, Roasted Tonka Bean, Nutmeg",
+        baseNotes: "Madagascar Vanilla Absolute, Birch Tar, Dark Amber",
+        mood: "Evening Sanctuary",
+        intensity: "4 / 5"
+      },
+      {
+        id: 8,
+        title: "No. 08 — Wild Neroli & Sea Salt Driftwood",
+        family: "Fresh & Citrus",
+        price: 2500,
+        weight: "220g / 7.8 oz",
+        burnTime: "50 Hours",
+        vessel: "Sandy Limestone Finish",
+        image: "https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?auto=format&fit=crop&w=800&q=80",
+        shortNotes: "Bitter Orange Blossom • Coastal Spray • Sunken Driftwood",
+        desc: "Brisk morning sea mist curling along windswept coastal cliffs. Bitter orange blossoms kissed with saline ocean minerals and sun-bleached driftwood.",
+        topNotes: "Coastal Sea Salt Spray, Lemon Verbena, Petitgrain",
+        heartNotes: "Tunisian Neroli Petals, Marine Ozone, Orange Flower",
+        baseNotes: "Sunken Driftwood, Grey Ambergris Accord, Oakmoss",
+        mood: "Serene Renewal",
+        intensity: "3 / 5"
+      }
+    ];
+
+    // ==========================================
+    // 2. CLIENT-SIDE STATE MANAGEMENT
+    // ==========================================
+    const FREE_SHIPPING_THRESHOLD = 3500;
+    const STANDARD_SHIPPING_FEE = 250;
+
+    let cartState = [];
+    let currentFilter = 'all';
+    let currentSort = 'default';
+    let activeModalItem = null;
+    let modalQuantity = 1;
+
+    // Load persisted state from localStorage
+    function initCartState() {
+      try {
+        const stored = localStorage.getItem('gamalu_cart');
+        if (stored) {
+          cartState = JSON.parse(stored);
+        }
+      } catch (e) {
+        console.warn('LocalStorage not accessible', e);
+        cartState = [];
+      }
+      renderCart();
+      updateCartBadge();
+    }
+
+    function saveCartState() {
+      try {
+        localStorage.setItem('gamalu_cart', JSON.stringify(cartState));
+      } catch (e) {
+        console.warn('Failed saving cart state', e);
+      }
+      renderCart();
+      updateCartBadge();
+    }
+
+    // ==========================================
+    // 3. CATALOG RENDERING & FILTERING
+    // ==========================================
+    function renderProductGrid() {
+      const grid = document.getElementById('product-grid');
+      if (!grid) return;
+
+      // Filter
+      let list = PRODUCTS.filter(p => {
+        if (currentFilter === 'all') return true;
+        return p.family.toLowerCase() === currentFilter.toLowerCase();
+      });
+
+      // Sort
+      if (currentSort === 'price-asc') {
+        list.sort((a, b) => a.price - b.price);
+      } else if (currentSort === 'price-desc') {
+        list.sort((a, b) => b.price - a.price);
+      } else if (currentSort === 'burn') {
+        list.sort((a, b) => parseInt(b.burnTime) - parseInt(a.burnTime));
+      }
+
+      // Update count label
+      const countEl = document.getElementById('product-count');
+      if (countEl) countEl.innerText = `Showing ${list.length} Objects`;
+
+      grid.innerHTML = list.map(product => `
+        <article class="group bg-alabaster flex flex-col justify-between transition-all duration-300">
+          
+          <!-- Image & Overlay Container -->
+          <div class="relative overflow-hidden rounded-sm aspect-[4/5] bg-linen border border-warm-sand/40">
+            <img 
+              src="${product.image}" 
+              alt="${product.title}" 
+              class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            >
+
+            <!-- Family Tag -->
+            <div class="absolute top-3 left-3 z-10">
+              <span class="inline-block px-2.5 py-1 text-[10px] uppercase tracking-widest font-medium bg-alabaster/90 backdrop-blur-sm text-espresso rounded border border-warm-sand/50">
+                ${product.family}
+              </span>
+            </div>
+
+            <!-- Quick View Hover Trigger -->
+            <div class="absolute inset-x-3 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <button 
+                onclick="openQuickView(${product.id})" 
+                class="w-full py-2.5 bg-obsidian/90 hover:bg-obsidian text-alabaster text-[11px] uppercase tracking-widest font-medium rounded backdrop-blur-sm transition-colors shadow-sm"
+              >
+                Quick View &bull; Notes
+              </button>
+            </div>
+          </div>
+
+          <!-- Product Details -->
+          <div class="pt-4 flex flex-col flex-1 justify-between">
+            <div>
+              <div class="flex items-center justify-between text-[11px] text-deep-bark uppercase tracking-wider mb-1">
+                <span>${product.vessel}</span>
+                <span>${product.burnTime}</span>
+              </div>
+
+              <h3 class="font-serif text-lg font-medium text-obsidian group-hover:text-gold-dark transition-colors line-clamp-1">
+                ${product.title}
+              </h3>
+
+              <p class="text-xs text-deep-bark font-light mt-1 line-clamp-1">
+                ${product.shortNotes}
+              </p>
+            </div>
+
+            <!-- Price & Add Action -->
+            <div class="pt-4 mt-2 border-t border-warm-sand/40 flex items-center justify-between">
+              <span class="font-serif text-lg font-semibold text-obsidian">
+                ₹${product.price.toLocaleString('en-IN')}
+              </span>
+
+              <button 
+                onclick="addToCart(${product.id})" 
+                class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded text-xs uppercase tracking-wider font-medium text-obsidian hover:text-alabaster bg-linen hover:bg-obsidian border border-warm-sand/60 transition-all duration-200"
+                aria-label="Add ${product.title} to Shopping Bag"
+              >
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                <span>Add</span>
+              </button>
+            </div>
+
+          </div>
+
+        </article>
+      `).join('');
+
+      // Refresh icons in dynamic elements
+      lucide.createIcons();
+    }
+
+    function filterCategory(category, buttonEl) {
+      currentFilter = category;
+      
+      // Update pills
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        btn.classList.remove('active', 'bg-obsidian', 'text-alabaster');
+        btn.classList.add('bg-linen', 'text-deep-bark');
+      });
+
+      if (buttonEl) {
+        buttonEl.classList.remove('bg-linen', 'text-deep-bark');
+        buttonEl.classList.add('active', 'bg-obsidian', 'text-alabaster');
+      }
+
+      renderProductGrid();
+    }
+
+    function handleSortChange(sortVal) {
+      currentSort = sortVal;
+      renderProductGrid();
+    }
+
+    // ==========================================
+    // 4. CART & SHOPPING BAG ENGINE
+    // ==========================================
+    function addToCart(productId, qty = 1) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingIndex = cartState.findIndex(item => item.id === productId);
+      if (existingIndex > -1) {
+        cartState[existingIndex].quantity += qty;
+      } else {
+        cartState.push({
+          id: product.id,
+          title: product.title,
+          family: product.family,
+          price: product.price,
+          image: product.image,
+          shortNotes: product.shortNotes,
+          quantity: qty
+        });
+      }
+
+      saveCartState();
+      showToast(`Added to Bag: ${product.title}`, product.image);
+    }
+
+    function quickAddHero() {
+      addToCart(1, 1);
+      toggleCartDrawer(true);
+    }
+
+    function updateCartQuantity(productId, delta) {
+      const idx = cartState.findIndex(i => i.id === productId);
+      if (idx === -1) return;
+
+      cartState[idx].quantity += delta;
+      if (cartState[idx].quantity <= 0) {
+        const removedTitle = cartState[idx].title;
+        cartState.splice(idx, 1);
+        showToast(`Removed: ${removedTitle}`);
+      }
+      saveCartState();
+    }
+
+    function removeFromCart(productId) {
+      const idx = cartState.findIndex(i => i.id === productId);
+      if (idx > -1) {
+        const title = cartState[idx].title;
+        cartState.splice(idx, 1);
+        saveCartState();
+        showToast(`Removed from Bag: ${title}`);
+      }
+    }
+
+    function getCartSubtotal() {
+      return cartState.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+
+    function getCartTotalCount() {
+      return cartState.reduce((sum, item) => sum + item.quantity, 0);
+    }
+
+    function updateCartBadge() {
+      const count = getCartTotalCount();
+      const subtotal = getCartSubtotal();
+      
+      const badge = document.getElementById('cart-badge');
+      if (badge) {
+        badge.innerText = count;
+        badge.classList.toggle('hidden', count === 0);
+      }
+
+      const headerSubtotal = document.getElementById('cart-subtotal-header');
+      if (headerSubtotal) {
+        headerSubtotal.innerText = `₹${subtotal.toLocaleString('en-IN')}`;
+      }
+
+      const drawerCount = document.getElementById('drawer-item-count');
+      if (drawerCount) {
+        drawerCount.innerText = `${count} ${count === 1 ? 'item' : 'items'}`;
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items-container');
+      if (!container) return;
+
+      const subtotal = getCartSubtotal();
+      const progressText = document.getElementById('shipping-progress-text');
+      const progressBar = document.getElementById('shipping-progress-bar');
+      const progressPct = document.getElementById('shipping-progress-pct');
+      const subtotalEl = document.getElementById('cart-subtotal-price');
+      const totalEl = document.getElementById('cart-total-price');
+      const shippingFeeEl = document.getElementById('cart-shipping-fee');
+      const checkoutBtn = document.getElementById('cart-checkout-btn');
+
+      // Complimentary Shipping Progress
+      if (subtotal >= FREE_SHIPPING_THRESHOLD) {
+        if (progressText) progressText.innerHTML = `✨ <span class="text-gold-dark font-medium">Unlocked: Complimentary White-Glove Shipping!</span>`;
+        if (progressBar) progressBar.style.width = '100%';
+        if (progressPct) progressPct.innerText = '100%';
+        if (shippingFeeEl) shippingFeeEl.innerHTML = `<span class="text-gold font-medium">Free (Threshold Met)</span>`;
+      } else {
+        const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+        const pct = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
+        if (progressText) progressText.innerText = `Add ₹${remaining.toLocaleString('en-IN')} more for Complimentary Shipping`;
+        if (progressBar) progressBar.style.width = `${pct}%`;
+        if (progressPct) progressPct.innerText = `${pct}%`;
+        if (shippingFeeEl) shippingFeeEl.innerText = subtotal > 0 ? `₹${STANDARD_SHIPPING_FEE}` : '—';
+      }
+
+      // Calculations
+      const shippingCost = (subtotal >= FREE_SHIPPING_THRESHOLD || subtotal === 0) ? 0 : STANDARD_SHIPPING_FEE;
+      const total = subtotal + shippingCost;
+
+      if (subtotalEl) subtotalEl.innerText = `₹${subtotal.toLocaleString('en-IN')}`;
+      if (totalEl) totalEl.innerText = `₹${total.toLocaleString('en-IN')}`;
+
+      // Empty State
+      if (cartState.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 text-center space-y-4">
+            <div class="w-16 h-16 rounded-full bg-linen mx-auto flex items-center justify-center text-warm-sand">
+              <i data-lucide="sparkles" class="w-8 h-8"></i>
+            </div>
+            <h4 class="font-serif text-xl text-obsidian font-normal">Your Bag is Empty</h4>
+            <p class="text-xs text-deep-bark font-light max-w-xs mx-auto">
+              Bring tranquility to your space. Explore our hand-poured botanical candles to begin your ritual.
+            </p>
+            <button onclick="toggleCartDrawer(false); scrollToSection('collection');" class="inline-block mt-2 px-6 py-2.5 bg-obsidian text-alabaster text-xs uppercase tracking-widest font-medium rounded hover:bg-gold hover:text-obsidian transition-colors">
+              Explore Collection
+            </button>
+          </div>
+        `;
+        if (checkoutBtn) {
+          checkoutBtn.disabled = true;
+          checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        }
+        lucide.createIcons();
+        return;
+      }
+
+      if (checkoutBtn) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      }
+
+      // Populated cart items
+      container.innerHTML = cartState.map(item => `
+        <div class="flex items-center space-x-4 pb-4 border-b border-warm-sand/30">
+          <!-- Thumbnail -->
+          <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded bg-linen flex-shrink-0 border border-warm-sand/40">
+
+          <!-- Details -->
+          <div class="flex-1 min-w-0">
+            <h4 class="font-serif text-sm font-medium text-obsidian truncate">${item.title}</h4>
+            <p class="text-[11px] text-deep-bark truncate">${item.family}</p>
+            <span class="text-xs font-semibold text-obsidian block mt-0.5">₹${item.price.toLocaleString('en-IN')}</span>
+          </div>
+
+          <!-- Quantity Stepper -->
+          <div class="flex items-center border border-warm-sand/60 rounded bg-linen">
+            <button onclick="updateCartQuantity(${item.id}, -1)" class="px-2 py-1 text-xs text-deep-bark hover:text-obsidian" aria-label="Decrease Quantity">-</button>
+            <span class="px-2 text-xs font-medium text-obsidian">${item.quantity}</span>
+            <button onclick="updateCartQuantity(${item.id}, 1)" class="px-2 py-1 text-xs text-deep-bark hover:text-obsidian" aria-label="Increase Quantity">+</button>
+          </div>
+
+          <!-- Remove -->
+          <button onclick="removeFromCart(${item.id})" class="p-1.5 text-deep-bark/70 hover:text-red-700 transition-colors" aria-label="Remove item">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function toggleCartDrawer(open) {
+      const drawer = document.getElementById('cart-drawer');
+      const overlay = document.getElementById('cart-drawer-overlay');
+      if (!drawer || !overlay) return;
+
+      if (open) {
+        renderCart();
+        overlay.classList.remove('pointer-events-none', 'opacity-0');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+        document.body.classList.add('overflow-hidden');
+      } else {
+        overlay.classList.remove('opacity-100');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        drawer.classList.add('translate-x-full');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // ==========================================
+    // 5. QUICK VIEW MODAL
+    // ==========================================
+    function openQuickView(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      activeModalItem = product;
+      modalQuantity = 1;
+
+      document.getElementById('qv-image').src = product.image;
+      document.getElementById('qv-title').innerText = product.title;
+      document.getElementById('qv-category').innerText = product.family;
+      document.getElementById('qv-family-badge').innerText = product.family;
+      document.getElementById('qv-price').innerText = `₹${product.price.toLocaleString('en-IN')}`;
+      document.getElementById('qv-desc').innerText = product.desc;
+      document.getElementById('qv-top').innerText = product.topNotes;
+      document.getElementById('qv-heart').innerText = product.heartNotes;
+      document.getElementById('qv-base').innerText = product.baseNotes;
+      document.getElementById('qv-burn').innerText = product.burnTime;
+      document.getElementById('qv-weight').innerText = product.weight;
+      document.getElementById('modal-qty').innerText = modalQuantity;
+
+      const modal = document.getElementById('quick-view-modal');
+      const panel = document.getElementById('quick-view-panel');
+      if (modal && panel) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
+        panel.classList.remove('scale-95');
+        panel.classList.add('scale-100');
+      }
+    }
+
+    function closeQuickView() {
+      const modal = document.getElementById('quick-view-modal');
+      const panel = document.getElementById('quick-view-panel');
+      if (modal && panel) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.remove('scale-100');
+        panel.classList.add('scale-95');
+      }
+    }
+
+    function incrementModalQty() {
+      modalQuantity++;
+      document.getElementById('modal-qty').innerText = modalQuantity;
+    }
+
+    function decrementModalQty() {
+      if (modalQuantity > 1) {
+        modalQuantity--;
+        document.getElementById('modal-qty').innerText = modalQuantity;
+      }
+    }
+
+    function addModalItemToCart() {
+      if (!activeModalItem) return;
+      addToCart(activeModalItem.id, modalQuantity);
+      closeQuickView();
+    }
+
+    // ==========================================
+    // 6. INTERACTIVE OLFACTORY MOOD GUIDE
+    // ==========================================
+    const MOOD_DATA = {
+      evening: {
+        id: 1,
+        title: "Evening Warmth & Intimacy",
+        candleName: "No. 01 — Santal & Smoked Cardamom",
+        top: "Green Cardamom • Sicilian Bergamot • Pink Peppercorn",
+        heart: "Atlas Cedarwood • Smoked Papyrus • Spiced Nutmeg",
+        base: "Mysore Sandalwood • Raw Amber • Madagascar Vanilla",
+        price: 2450
+      },
+      focus: {
+        id: 3,
+        title: "Deep Focus & Grounding",
+        candleName: "No. 03 — Hinoki Wood & Forest Mist",
+        top: "Japanese Hinoki • Elemi Gum • Fresh Thyme",
+        heart: "Smoked Pine Needle • Siberian Fir • Florentine Iris",
+        base: "Haitian Vetiver Root • Frankincense Tear • Tree Moss",
+        price: 2850
+      },
+      serenity: {
+        id: 2,
+        title: "Serene Renewal & Breath",
+        candleName: "No. 02 — Fig Leaf & Solar Jasmine",
+        top: "Wild Fig Leaf • Petitgrain • Green Almond",
+        heart: "Night-Blooming Jasmine • Neroli Petals • Dewy Rose",
+        base: "Coconut Water • White Cedarwood • Sheer Musk",
+        price: 2600
+      }
+    };
+
+    let activeMoodKey = 'evening';
+
+    function selectMood(moodKey, btn) {
+      activeMoodKey = moodKey;
+      const data = MOOD_DATA[moodKey];
+      if (!data) return;
+
+      // Update styling
+      document.querySelectorAll('.mood-tab').forEach(t => {
+        t.classList.remove('border-gold', 'bg-alabaster', 'shadow-sm');
+        t.classList.add('border-warm-sand/40', 'bg-alabaster/60');
+      });
+
+      if (btn) {
+        btn.classList.remove('border-warm-sand/40', 'bg-alabaster/60');
+        btn.classList.add('border-gold', 'bg-alabaster', 'shadow-sm');
+      }
+
+      document.getElementById('pyramid-candle-name').innerText = data.candleName;
+      document.getElementById('pyramid-top-notes').innerText = data.top;
+      document.getElementById('pyramid-heart-notes').innerText = data.heart;
+      document.getElementById('pyramid-base-notes').innerText = data.base;
+      document.getElementById('pyramid-add-btn').innerText = `Add This Scent (₹${data.price.toLocaleString('en-IN')})`;
+      
+      document.getElementById('pyramid-add-btn').onclick = function() {
+        addToCart(data.id, 1);
+      };
+      document.getElementById('pyramid-view-btn').onclick = function() {
+        openQuickView(data.id);
+      };
+    }
+
+    // ==========================================
+    // 7. CHECKOUT & ORDER SUBMISSION ENGINE
+    // ==========================================
+    let selectedPaymentMethod = 'UPI';
+
+    function openCheckoutModal() {
+      if (cartState.length === 0) return;
+      toggleCartDrawer(false);
+
+      const subtotal = getCartSubtotal();
+      const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_FEE;
+      const total = subtotal + shipping;
+      const itemCount = getCartTotalCount();
+
+      document.getElementById('checkout-item-summary').innerText = `${itemCount} artisanal candle${itemCount === 1 ? '' : 's'} in bag`;
+      document.getElementById('checkout-total-banner').innerText = `₹${total.toLocaleString('en-IN')}`;
+
+      const modal = document.getElementById('checkout-modal');
+      const panel = document.getElementById('checkout-panel');
+      if (modal && panel) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
+        panel.classList.remove('scale-95');
+        panel.classList.add('scale-100');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkout-modal');
+      const panel = document.getElementById('checkout-panel');
+      if (modal && panel) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.remove('scale-100');
+        panel.classList.add('scale-95');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    function toggleGiftField(checked) {
+      const wrapper = document.getElementById('gift-field-wrapper');
+      if (wrapper) wrapper.classList.toggle('hidden', !checked);
+    }
+
+    function changePaymentMethod(method) {
+      selectedPaymentMethod = method;
+
+      document.querySelectorAll('.payment-method-card').forEach(card => {
+        card.classList.remove('border-gold', 'bg-alabaster', 'active');
+        card.classList.add('border-warm-sand/60', 'bg-linen');
+      });
+
+      const activeCard = event.currentTarget.closest('.payment-method-card');
+      if (activeCard) {
+        activeCard.classList.remove('border-warm-sand/60', 'bg-linen');
+        activeCard.classList.add('border-gold', 'bg-alabaster', 'active');
+      }
+
+      document.getElementById('pay-upi-view').classList.toggle('hidden', method !== 'UPI');
+      document.getElementById('pay-card-view').classList.toggle('hidden', method !== 'Card');
+      document.getElementById('pay-cod-view').classList.toggle('hidden', method !== 'COD');
+    }
+
+    function handlePlaceOrder(event) {
+      event.preventDefault();
+
+      // Form validation
+      const name = document.getElementById('client-name').value.trim();
+      const email = document.getElementById('client-email').value.trim();
+      const phone = document.getElementById('client-phone').value.trim();
+      const address = document.getElementById('client-address').value.trim();
+      const city = document.getElementById('client-city').value.trim();
+      const state = document.getElementById('client-state').value;
+      const pin = document.getElementById('client-pin').value.trim();
+      const isGift = document.getElementById('gift-toggle').checked;
+      const giftNote = isGift ? document.getElementById('gift-note').value.trim() : '';
+
+      let hasError = false;
+
+      // Validate Phone (10 digits)
+      if (!/^\d{10}$/.test(phone)) {
+        document.getElementById('err-phone').classList.remove('hidden');
+        hasError = true;
+      } else {
+        document.getElementById('err-phone').classList.add('hidden');
+      }
+
+      // Validate PIN (6 digits)
+      if (!/^\d{6}$/.test(pin)) {
+        document.getElementById('err-pin').classList.remove('hidden');
+        hasError = true;
+      } else {
+        document.getElementById('err-pin').classList.add('hidden');
+      }
+
+      if (hasError) return;
+
+      // Processing state
+      const submitBtn = document.getElementById('place-order-submit-btn');
+      const submitText = document.getElementById('submit-btn-text');
+      submitBtn.disabled = true;
+      submitText.innerText = "Authorizing Luxury Order...";
+
+      setTimeout(() => {
+        // Generate Order ID
+        const orderNum = Math.floor(1000 + Math.random() * 9000);
+        const orderId = `#GAB-${orderNum}`;
+
+        const subtotal = getCartSubtotal();
+        const shipping = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : STANDARD_SHIPPING_FEE;
+        const total = subtotal + shipping;
+
+        // Render digital receipt
+        document.getElementById('receipt-order-id').innerText = orderId;
+        document.getElementById('receipt-date').innerText = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        document.getElementById('receipt-client-info').innerText = `${name} • ${phone} (${email})`;
+        document.getElementById('receipt-address').innerText = `${address}, ${city}, ${state} - ${pin}`;
+        document.getElementById('receipt-subtotal').innerText = `₹${subtotal.toLocaleString('en-IN')}`;
+        document.getElementById('receipt-shipping').innerText = shipping === 0 ? "Complimentary" : `₹${shipping}`;
+        document.getElementById('receipt-total').innerText = `₹${total.toLocaleString('en-IN')}`;
+        document.getElementById('receipt-payment-method').innerText = `Authorized via ${selectedPaymentMethod}`;
+
+        // Gift note preview
+        const giftPreview = document.getElementById('receipt-gift-preview');
+        const giftText = document.getElementById('receipt-gift-text');
+        if (isGift && giftNote) {
+          giftText.innerText = `"${giftNote}"`;
+          giftPreview.classList.remove('hidden');
+        } else {
+          giftPreview.classList.add('hidden');
+        }
+
+        // Receipt items list
+        const itemsList = document.getElementById('receipt-items-list');
+        itemsList.innerHTML = cartState.map(i => `
+          <div class="flex items-center justify-between text-xs py-1">
+            <span class="text-obsidian font-medium">${i.title} &times; ${i.quantity}</span>
+            <span class="text-deep-bark">₹${(i.price * i.quantity).toLocaleString('en-IN')}</span>
+          </div>
+        `).join('');
+
+        // Clear cart
+        cartState = [];
+        saveCartState();
+
+        // Reset submit button
+        submitBtn.disabled = false;
+        submitText.innerText = "Place Luxury Order";
+
+        // Switch to receipt modal
+        closeCheckoutModal();
+        openReceiptModal();
+
+        showToast(`Order Confirmed! Identifier ${orderId}`);
+      }, 1200);
+    }
+
+    function openReceiptModal() {
+      const modal = document.getElementById('receipt-modal');
+      const panel = document.getElementById('receipt-panel');
+      if (modal && panel) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
+        panel.classList.remove('scale-95');
+        panel.classList.add('scale-100');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeReceiptModal() {
+      const modal = document.getElementById('receipt-modal');
+      const panel = document.getElementById('receipt-panel');
+      if (modal && panel) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.remove('scale-100');
+        panel.classList.add('scale-95');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // ==========================================
+    // 8. SEARCH & DISCOVERY MODAL
+    // ==========================================
+    function toggleSearchModal(open) {
+      const modal = document.getElementById('search-modal');
+      const panel = document.getElementById('search-panel');
+      const input = document.getElementById('search-input');
+      if (!modal || !panel) return;
+
+      if (open) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
+        panel.classList.remove('-translate-y-4');
+        panel.classList.add('translate-y-0');
+        if (input) {
+          input.value = '';
+          input.focus();
+        }
+        handleSearch('');
+      } else {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        panel.classList.remove('translate-y-0');
+        panel.classList.add('-translate-y-4');
+      }
+    }
+
+    function handleSearch(query) {
+      const container = document.getElementById('search-results');
+      if (!container) return;
+
+      const q = query.trim().toLowerCase();
+      if (!q) {
+        container.innerHTML = `<p class="text-deep-bark/60 text-center py-4">Type to filter candles across olfactory accords (e.g. cardamom, amber, jasmine)...</p>`;
+        return;
+      }
+
+      const matches = PRODUCTS.filter(p => 
+        p.title.toLowerCase().includes(q) ||
+        p.family.toLowerCase().includes(q) ||
+        p.desc.toLowerCase().includes(q) ||
+        p.topNotes.toLowerCase().includes(q) ||
+        p.heartNotes.toLowerCase().includes(q) ||
+        p.baseNotes.toLowerCase().includes(q)
+      );
+
+      if (matches.length === 0) {
+        container.innerHTML = `<p class="text-deep-bark text-center py-4">No matching scent accords found for "${query}".</p>`;
+        return;
+      }
+
+      container.innerHTML = matches.map(p => `
+        <div onclick="toggleSearchModal(false); openQuickView(${p.id});" class="p-2.5 hover:bg-linen rounded flex items-center justify-between cursor-pointer transition-colors border border-warm-sand/30">
+          <div class="flex items-center space-x-3">
+            <img src="${p.image}" class="w-10 h-10 object-cover rounded bg-linen">
+            <div>
+              <h5 class="font-serif text-sm font-medium text-obsidian">${p.title}</h5>
+              <p class="text-[10px] text-deep-bark truncate">${p.shortNotes}</p>
+            </div>
+          </div>
+          <span class="font-serif text-xs font-semibold text-gold-dark">₹${p.price.toLocaleString('en-IN')}</span>
+        </div>
+      `).join('');
+    }
+
+    // ==========================================
+    // 9. CUSTOM TOAST NOTIFICATION SYSTEM
+    // ==========================================
+    function showToast(message, image = null) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'glassmorphism-dark text-alabaster p-3.5 rounded shadow-2xl border border-warm-sand/20 flex items-center justify-between pointer-events-auto transform translate-y-4 opacity-0 transition-all duration-300';
+      
+      toast.innerHTML = `
+        <div class="flex items-center space-x-3 min-w-0 pr-2">
+          ${image ? `<img src="${image}" class="w-8 h-8 rounded object-cover flex-shrink-0 border border-gold/40">` : `<i data-lucide="sparkles" class="w-5 h-5 text-gold flex-shrink-0"></i>`}
+          <span class="text-xs tracking-wide text-alabaster truncate font-light">${message}</span>
+        </div>
+        <button onclick="toggleCartDrawer(true)" class="text-[11px] uppercase tracking-wider text-gold hover:text-gold-hover font-medium underline flex-shrink-0">
+          View Bag
+        </button>
+      `;
+
+      container.appendChild(toast);
+      lucide.createIcons();
+
+      // Trigger enter animation
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-4', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+      });
+
+      // Auto dismiss after 3.8s
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-4', 'opacity-0');
+        setTimeout(() => toast.remove(), 350);
+      }, 3800);
+    }
+
+    // ==========================================
+    // 10. NEWSLETTER & UTILITIES
+    // ==========================================
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-email');
+      const msg = document.getElementById('newsletter-msg');
+      if (!input || !msg) return;
+
+      const email = input.value.trim();
+      if (email) {
+        msg.innerText = "You have been inscribed into The Sensory Journal. Look for dispatch No. 09 soon.";
+        msg.classList.remove('hidden');
+        input.value = '';
+        showToast("Subscribed to The Sensory Journal");
+      }
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // ==========================================
+    // 11. INITIALIZATION & EVENT LISTENERS
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Render product grid and restore cart state
+      renderProductGrid();
+      initCartState();
+
+      // Setup mobile drawer listeners
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const closeMobileBtn = document.getElementById('close-mobile-menu-btn');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+      const mobilePanel = document.getElementById('mobile-drawer-panel');
+
+      function toggleMobileDrawer(open) {
+        if (open) {
+          mobileDrawer.classList.remove('pointer-events-none', 'opacity-0');
+          mobileDrawer.classList.add('opacity-100');
+          mobilePanel.classList.remove('-translate-x-full');
+          mobilePanel.classList.add('translate-x-0');
+        } else {
+          mobileDrawer.classList.add('opacity-0', 'pointer-events-none');
+          mobilePanel.classList.remove('translate-x-0');
+          mobilePanel.classList.add('-translate-x-full');
+        }
+      }
+
+      if (mobileBtn) mobileBtn.addEventListener('click', () => toggleMobileDrawer(true));
+      if (closeMobileBtn) closeMobileBtn.addEventListener('click', () => toggleMobileDrawer(false));
+      if (mobileDrawer) {
+        mobileDrawer.addEventListener('click', (e) => {
+          if (e.target === mobileDrawer) toggleMobileDrawer(false);
+        });
+      }
+
+      // Close mobile drawer when clicking anchor links
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => toggleMobileDrawer(false));
+      });
+
+      // Escape key closes modals
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          toggleCartDrawer(false);
+          closeQuickView();
+          closeCheckoutModal();
+          closeReceiptModal();
+          toggleSearchModal(false);
+          toggleMobileDrawer(false);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
